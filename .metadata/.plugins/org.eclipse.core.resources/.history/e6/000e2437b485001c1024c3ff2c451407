@@ -1,0 +1,13 @@
+package com.webDev.backend;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WebDevBackendApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WebDevBackendApplication.class, args);
+	}
+
+}

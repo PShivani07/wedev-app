@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+  # mysql database for the application
+  web-dev_mysql:
+    image: mysql:8.0.27
+    container_name: web-dev_mysql
+    # Volume mounted for database for the storage
+    volumes:
+      - ./mysql:/var/lib/mysql
+    ports:
+      - 3306:3306 # Forward the exposed port 3306 on the container to port 3306 on the host machine
+    # Environment variable for DB name, user and password
+    environment:
+      - MYSQL_DB=full-stack-sharemedia?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+
+  #Back-end Spring Boot Application
+  web-dev_backend:
+    # The docker file in webDev_backend build the jar and provides the docker image with the following name.
+    build: ./webDev_backend
+    container_name: web-dev-backend
+
+    # Environment variables for Spring Boot Application.
+    environment:
+      - DB_SERVER=web-dev_mysql
+      - MYSQL_DB=full-stack-sharemedia?useSSL=false&useUnicode=yes&characterEncoding=UTF-8&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      - MYSQL_ROOT_PASSWORD=root
+
+    ports:
+      - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    command: "mvn clean spring-boot:run"
+    links:
+      - web-dev_mysql
+    depends_on:
+      - web-dev_mysql
+
+  # Front-end Angular Application
+  web-dev_frontend:
+    build: ./webDev_frontend
+    container_name: web-dev_frontend
+    ports:
+      - 4200:80
+    links:
+      - web-dev_backend
+    depends_on:
+      - web-dev_backend
+
+# Volumes for DB data

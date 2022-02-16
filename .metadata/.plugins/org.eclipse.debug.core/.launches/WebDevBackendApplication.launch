@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.linuxtools.jdt.docker.launcher.JavaAppInContainerLaunchConfigurationType">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/webDev_backend/src/main/java/com/webDev/backend/WebDevBackendApplication.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.webDev.backend.WebDevBackendApplication"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value=""/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="webDev_backend"/>
+    <stringAttribute key="org.eclipse.linuxtools.jdt.docker.launcher.connection.uri" value="unix:///var/run/docker.sock"/>
+    <stringAttribute key="org.eclipse.linuxtools.jdt.docker.launcher.image.id" value="sha256:205cdb3d4bfaec44695d4e191703c29e226df26cbd1e0c9c1a101472ac93e4b1"/>
+</launchConfiguration>
